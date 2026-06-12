@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { cn } from '../../utils/cn';
+
 
 interface RaceHighlightProps {
   title: string;

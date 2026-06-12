@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 interface AchievementChapterProps {
   featuredImage: string;
@@ -7,16 +7,9 @@ interface AchievementChapterProps {
 }
 
 const AchievementChapter: React.FC<AchievementChapterProps> = ({ featuredImage, secondaryImages }) => {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
-  
-  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8], [0, 1, 1]);
-
   return (
-    <section ref={containerRef} className="relative bg-brand-black py-16 md:py-24 overflow-hidden">
+    <section className="relative bg-brand-black py-16 md:py-24 overflow-hidden">
+
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="text-center mb-16 md:mb-24">
           <h2 className="text-brand-orange text-lg md:text-2xl font-black uppercase tracking-[0.5em] mb-4">Achievement Gallery</h2>

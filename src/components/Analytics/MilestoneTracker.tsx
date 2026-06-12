@@ -15,7 +15,15 @@ const milestones = [
   { km: 500, label: "Legacy", icon: Award },
 ];
 
-const StatCard = ({ icon: Icon, value, label, sub, delay = 0 }: any) => (
+interface StatCardProps {
+  icon: React.ElementType;
+  value: string | number;
+  label: string;
+  sub?: string;
+  delay?: number;
+}
+
+const StatCard = ({ icon: Icon, value, label, sub, delay = 0 }: StatCardProps) => (
   <motion.div 
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}

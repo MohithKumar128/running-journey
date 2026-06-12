@@ -8,7 +8,15 @@ interface HeroProps {
   avgPace: number;
 }
 
-const AnimatedCounter = ({ value, duration = 2000, decimals = 2, label, icon: Icon }: any) => {
+interface AnimatedCounterProps {
+  value: number;
+  duration?: number;
+  decimals?: number;
+  label: string;
+  icon: React.ElementType;
+}
+
+const AnimatedCounter = ({ value, duration = 2000, decimals = 2, label, icon: Icon }: AnimatedCounterProps) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
@@ -43,7 +51,7 @@ const Hero: React.FC<HeroProps> = ({ totalDistance, totalTime, avgPace }) => {
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const y = useTransform(scrollYProgress, [0, 0.2], [0, -100]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [1.1, 1.3]);
-  const blur = useTransform(scrollYProgress, [0, 0.2], [0, 10]);
+  
 
   return (
     <motion.section 
