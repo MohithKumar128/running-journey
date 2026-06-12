@@ -47,7 +47,7 @@ function App() {
             "Just wanted to run. It was a simple urge that grew into something much larger.",
             "Srivatsav introduced me to the running world, turning a solitary jog into a disciplined pursuit."
           ]}
-          imagePath="/images/shoes and legs sunny in andhrapradesh.jpeg"
+          imagePath={import.meta.env.BASE_URL + "images/shoes and legs sunny in andhrapradesh.jpeg"}
           imageCaption="The Beginning • November"
           aspectRatio="landscape"
         />
@@ -61,7 +61,7 @@ function App() {
             "Every sunrise was an appointment with myself that I refused to miss.",
             "I learned that inspiration gets you started, but only discipline keeps you moving."
           ]}
-          imagePath="/images/body in sunny environment.jpeg"
+          imagePath={import.meta.env.BASE_URL + "images/body in sunny environment.jpeg"}
           imageCaption="The Grind • 125 KM Month"
           aspectRatio="portrait"
         />
@@ -85,7 +85,7 @@ function App() {
             "I finished in 5:33. For the first time, I realized I wasn't chasing medals.",
             "I simply wanted to run. This race created the runner."
           ]}
-          imagePath="/images/1.5k race with gaurav.jpeg"
+          imagePath={import.meta.env.BASE_URL + "images/1.5k race with gaurav.jpeg"}
           imageCaption="1.5K Race • 5:33 Finish"
         />
 
@@ -97,7 +97,7 @@ function App() {
             "We pushed each other. Shared suffering. Shared improvement. Shared goals.",
             "The journey became bigger than me."
           ]}
-          imagePath="/images/5k race with naman bhai.jpeg"
+          imagePath={import.meta.env.BASE_URL + "images/5k race with naman bhai.jpeg"}
           imageCaption="Shared Suffering • Shared Goals"
           aspectRatio="portrait"
         />
@@ -111,7 +111,7 @@ function App() {
             "Every reel made me want to stand on those start lines. Then I realized something: I had already missed TCS World 10K Bengaluru 2026.",
             "The moment I discovered Procam, my chance to complete the 2026 Procam Slam was already gone. That regret stayed with me."
           ]}
-          imagePath="/images/me with bib no and medal.jpeg"
+          imagePath={import.meta.env.BASE_URL + "images/me with bib no and medal.jpeg"}
           imageCaption="The Realization of a Dream"
           aspectRatio="portrait"
         />
@@ -129,11 +129,11 @@ function App() {
 
         {/* Achievement Gallery */}
         <AchievementChapter 
-          featuredImage="/images/selfie of tcs 10k completed with timing.jpeg"
+          featuredImage={import.meta.env.BASE_URL + "images/selfie of tcs 10k completed with timing.jpeg"}
           secondaryImages={[
-            "/images/me with bib no and medal.jpeg",
-            "/images/tcs 10k medal photo.jpeg",
-            "/images/tcs 10 bengulur virutal practice run.jpeg"
+            import.meta.env.BASE_URL + "images/me with bib no and medal.jpeg",
+            import.meta.env.BASE_URL + "images/tcs 10k medal photo.jpeg",
+            import.meta.env.BASE_URL + "images/tcs 10 bengulur virutal practice run.jpeg"
           ]}
         />
 
@@ -146,7 +146,7 @@ function App() {
             "It was a small moment, but it made me feel connected to runners across India.",
             "I was no longer watching from outside. I was becoming part of the community."
           ]}
-          imagePath="/images/all time best running timings.jpeg"
+          imagePath={import.meta.env.BASE_URL + "images/all time best running timings.jpeg"}
           imageCaption="Part of the Community"
           aspectRatio="landscape"
         />
@@ -159,7 +159,7 @@ function App() {
             </h2>
             <div className="w-full max-w-4xl aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl shadow-brand-orange/10 border border-brand-white/5 mb-12">
               <img 
-                src="/images/curved mirror photo.jpeg" 
+                src={import.meta.env.BASE_URL + "images/curved mirror photo.jpeg"} 
                 alt="500 KM Breakthrough" 
                 className="w-full h-full object-contain object-center grayscale hover:grayscale-0 transition-all duration-1000 p-4"
               />
@@ -191,7 +191,7 @@ function App() {
         </section>
 
         {/* Final Chapter: The Dream */}
-        <FinalCinematic imagePath="/images/back photo of mohhith solid photo.jpeg" />
+        <FinalCinematic imagePath={import.meta.env.BASE_URL + "images/back photo of mohhith solid photo.jpeg"} />
 
         {/* Footer */}
         <footer className="relative py-24 md:py-32 text-center bg-black border-t border-brand-white/5 overflow-hidden">

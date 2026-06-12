@@ -60,7 +60,7 @@ const Hero: React.FC<HeroProps> = ({ totalDistance, totalTime, avgPace }) => {
     >
       <motion.div 
         style={{ 
-          backgroundImage: "url('/images/main photo starting page.jpeg')",
+          backgroundImage: `url('${import.meta.env.BASE_URL}images/main photo starting page.jpeg')`,
           scale,
           filter: "grayscale(100%) contrast(1.2)"
         }}
