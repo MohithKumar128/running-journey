@@ -7,10 +7,10 @@ interface FinalCinematicProps {
 
 const FinalCinematic: React.FC<FinalCinematicProps> = ({ imagePath }) => {
   const goals = [
-    { city: "BENGALURU", race: "TCS WORLD 10K", year: "2027" },
-    { city: "MUMBAI", race: "TATA MUMBAI MARATHON", year: "2027" },
-    { city: "DELHI", race: "VEDANTA DELHI HALF MARATHON", year: "2028" },
-    { city: "KOLKATA", race: "TCS WORLD 25K", year: "2028" },
+    { city: "BENGALURU", race: "TCS WORLD 10K", year: "2028" },
+    { city: "MUMBAI", race: "TATA MUMBAI MARATHON", year: "2028" },
+    { city: "DELHI", race: "VEDANTA DELHI HALF MARATHON", year: "2029" },
+    { city: "KOLKATA", race: "TCS WORLD 25K", year: "2029" },
   ];
 
   return (
@@ -43,15 +43,15 @@ const FinalCinematic: React.FC<FinalCinematicProps> = ({ imagePath }) => {
         </h2>
         
         <div className="max-w-5xl mx-auto mb-16 md:mb-32">
-          <h1 className="text-6xl md:text-9xl lg:text-[13rem] font-black text-brand-white tracking-tighter leading-[0.8] mb-16 uppercase italic">
+          <h1 className="text-5xl sm:text-7xl md:text-9xl lg:text-[clamp(8rem,12vw,13rem)] font-black text-brand-white tracking-tighter leading-[0.8] mb-16 uppercase italic">
             ONE CITY.<br />ONE RACE.<br /><span className="text-brand-orange not-italic drop-shadow-[0_0_50px_rgba(255,87,34,0.4)]">ONE FINISH.</span>
           </h1>
           
-          <div className="space-y-8 text-2xl md:text-5xl text-brand-white font-black italic uppercase tracking-tighter leading-tight max-w-4xl mx-auto">
+          <div className="space-y-8 text-xl sm:text-2xl md:text-5xl text-brand-white font-black italic uppercase tracking-tighter leading-tight max-w-4xl mx-auto">
             <p>The virtual run was the first step.</p>
             <p className="text-brand-orange">The medal was proof.</p>
             <p>500 kilometres was the foundation.</p>
-            <p className="text-brand-white/40 md:text-3xl mt-12">Now the goal is simple.</p>
+            <p className="text-brand-white/40 text-lg sm:text-xl md:text-3xl mt-12">Now the goal is simple.</p>
             <p className="text-brand-orange not-italic">One city. One race. One finish line at a time.</p>
           </div>
         </div>
@@ -86,7 +86,7 @@ const FinalCinematic: React.FC<FinalCinematicProps> = ({ imagePath }) => {
             <h3 className="text-4xl md:text-7xl lg:text-8xl font-black text-brand-white uppercase tracking-tighter italic">
               Legacy Unfolding
             </h3>
-            <p className="mt-6 text-brand-orange font-black uppercase tracking-[0.5em] text-sm md:text-base">Target Period • 2027–2028</p>
+            <p className="mt-6 text-brand-orange font-black uppercase tracking-[0.5em] text-sm md:text-base">Target Period • 2028–2029</p>
           </div>
         </motion.div>
       </motion.div>

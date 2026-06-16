@@ -102,10 +102,26 @@ function App() {
           aspectRatio="portrait"
         />
 
-        {/* Chapter 6: The Procam Dream */}
+        {/* Chapter 6: Belonging */}
         <StoryChapter 
-          title="The Procam Dream"
+          title="Belonging"
           reverse
+          content={[
+            "During my exam break, I unexpectedly got four days of holidays. Around the same time, a senior named Sanjay Samuel was preparing for one of his final runs before graduating from Amrita Coimbatore.",
+            "I had never met him before. He was from EEE while I was from CSE. Despite being in the same college, our paths had never crossed until his final days on campus.",
+            "Samuel invited runners across the college to join him for a Half Marathon. I decided to take part. What started as a run became hours of conversation, encouragement, and shared experiences.",
+            "During the run, Samuel developed a cramp. I stayed with him and helped him finish. Somewhere along the route, he smiled and said, 'You are like a mini version of me.'",
+            "After finishing the Half Marathon, he told me: 'You are officially part of the runners club now.'",
+            "He explained that very few students at Amrita Coimbatore complete a Half Marathon during college. Hearing those words gave me confidence and made me feel that I truly belonged to the running community."
+          ]}
+          imagePath={import.meta.env.BASE_URL + "images/sanjay samuel.jpg"}
+          imageCaption="Half Marathon • Belonging"
+          aspectRatio="portrait"
+        />
+
+        {/* Chapter 7: The Dream */}
+        <StoryChapter 
+          title="The Dream"
           content={[
             "I discovered Procam through Instagram reels. I watched runners complete the TCS World 10K, Tata Mumbai Marathon, and more.",
             "Every reel made me want to stand on those start lines. Then I realized something: I had already missed TCS World 10K Bengaluru 2026.",
@@ -116,7 +132,7 @@ function App() {
           aspectRatio="portrait"
         />
 
-        {/* Chapter 7: TCS World 10K */}
+        {/* Chapter 8: TCS World 10K */}
         <StoryChapter 
           title="TCS World 10K"
           content={[
@@ -154,8 +170,9 @@ function App() {
         {/* 500 KM Breakthrough */}
         <section className="bg-brand-black py-24 md:py-32 border-y border-brand-white/5 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 flex flex-col items-center">
-            <h2 className="text-4xl md:text-[clamp(4rem,7vw,8rem)] font-black text-brand-white uppercase mb-12 tracking-tighter text-center">
-              500 KM<br /><span className="text-brand-orange">LEGACY UNLOCKED</span>
+            <h2 className="flex flex-col items-center text-center mb-16 tracking-tighter uppercase font-black">
+              <span className="text-6xl md:text-8xl lg:text-[clamp(6rem,10vw,12rem)] text-brand-white leading-[0.8]">500 KM</span>
+              <span className="text-2xl md:text-4xl lg:text-[clamp(2.5rem,4vw,6rem)] text-brand-orange mt-2 md:mt-4">LEGACY UNLOCKED</span>
             </h2>
             <div className="w-full max-w-4xl aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl shadow-brand-orange/10 border border-brand-white/5 mb-12">
               <img 

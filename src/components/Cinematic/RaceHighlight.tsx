@@ -94,10 +94,10 @@ const RaceHighlight: React.FC<RaceHighlightProps> = ({
             <div className="w-16 h-1 bg-brand-orange mb-8 md:mb-12" />
             
             <h2 className="flex flex-col mb-8 md:mb-12">
-              <span className="text-brand-white text-5xl md:text-7xl xl:text-9xl font-black leading-[0.85] tracking-tighter uppercase">
+              <span className="text-4xl sm:text-5xl md:text-7xl xl:text-[clamp(6rem,8vw,10rem)] font-black leading-[0.85] tracking-tighter uppercase text-brand-white">
                 {titleParts[0]}
               </span>
-              <span className="text-brand-orange text-5xl md:text-7xl xl:text-9xl font-black leading-[0.85] tracking-tighter uppercase">
+              <span className="text-4xl sm:text-5xl md:text-7xl xl:text-[clamp(6rem,8vw,10rem)] font-black leading-[0.85] tracking-tighter uppercase text-brand-orange">
                 {titleParts[1]}
               </span>
             </h2>

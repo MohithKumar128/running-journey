@@ -79,7 +79,7 @@ const StoryChapter: React.FC<StoryChapterProps> = ({
               "h-1 w-20 mb-8 md:mb-10",
               isHighImpact ? "bg-brand-black" : "bg-brand-orange"
             )} />
-            <h2 className="text-4xl md:text-[clamp(4rem,7vw,8rem)] font-black mb-8 md:mb-10 leading-[0.9] uppercase tracking-[-0.05em] whitespace-normal md:whitespace-nowrap">
+            <h2 className="text-4xl sm:text-5xl md:text-[clamp(4rem,7vw,8rem)] font-black mb-8 md:mb-10 leading-[0.9] uppercase tracking-[-0.05em] whitespace-normal md:whitespace-nowrap">
               {title}
             </h2>
             <div className="space-y-4 md:space-y-6 text-base md:text-xl lg:text-2xl opacity-90 leading-relaxed font-medium max-w-xl">

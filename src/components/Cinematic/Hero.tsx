@@ -81,7 +81,7 @@ const Hero: React.FC<HeroProps> = ({ totalDistance, totalTime, avgPace }) => {
             transition={{ delay: 0.5, duration: 1, ease: "circOut" }}
             className="h-1 bg-brand-orange w-24 mx-auto mb-8"
           />
-          <h1 className="text-7xl md:text-[12rem] font-black tracking-tighter text-brand-white mb-4 leading-[0.8] uppercase">
+          <h1 className="text-5xl sm:text-7xl md:text-[clamp(7rem,12vw,12rem)] font-black tracking-tighter text-brand-white mb-4 leading-[0.8] uppercase">
             Running<br />
             <span className="text-brand-orange italic drop-shadow-[0_0_30px_rgba(255,87,34,0.3)]">Journey</span>
           </h1>
