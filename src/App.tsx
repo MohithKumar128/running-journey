@@ -162,8 +162,8 @@ function App() {
             "It was a small moment, but it made me feel connected to runners across India.",
             "I was no longer watching from outside. I was becoming part of the community."
           ]}
-          imagePath={import.meta.env.BASE_URL + "images/all time best running timings.jpeg"}
-          imageCaption="Part of the Community"
+          imagePath={import.meta.env.BASE_URL + "images/commented-reel.jpeg"}
+          imageCaption="A Small Comment • A Big Moment"
           aspectRatio="landscape"
         />
 
