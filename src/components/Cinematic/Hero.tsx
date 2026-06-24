@@ -1,6 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ChevronDown, Timer, Zap, TrendingUp } from 'lucide-react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { ChevronDown, ChevronUp, Timer, Zap, TrendingUp, ArrowUpRight } from 'lucide-react';
+
+const InstagramIcon = ({ size = 24, className = "" }: { size?: number; className?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+  </svg>
+);
 
 interface HeroProps {
   totalDistance: number;
@@ -51,10 +70,42 @@ const Hero: React.FC<HeroProps> = ({ totalDistance, totalTime, avgPace }) => {
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const y = useTransform(scrollYProgress, [0, 0.2], [0, -100]);
   const scale = useTransform(scrollYProgress, [0, 0.5], [1.1, 1.3]);
-  
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleScrollDown = () => {
+    const heroElement = document.getElementById('hero');
+    if (heroElement && heroElement.nextElementSibling) {
+      heroElement.nextElementSibling.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.scrollTo({
+        top: window.innerHeight,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   return (
     <motion.section 
+      id="hero"
       style={{ opacity, y }}
       className="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-brand-black"
     >
@@ -85,9 +136,51 @@ const Hero: React.FC<HeroProps> = ({ totalDistance, totalTime, avgPace }) => {
             Running<br />
             <span className="text-brand-orange italic drop-shadow-[0_0_30px_rgba(255,87,34,0.3)]">Journey</span>
           </h1>
-          <p className="text-brand-white/40 text-sm md:text-xl font-black tracking-[0.8em] uppercase mb-20 ml-[0.8em]">
+          <p className="text-brand-white/40 text-sm md:text-xl font-black tracking-[0.8em] uppercase mb-10 ml-[0.8em]">
             Andhra Pradesh • Transformation • 2026
           </p>
+        </motion.div>
+
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.0, duration: 1 }}
+          className="flex flex-wrap justify-center gap-6 mb-16 relative z-20"
+        >
+          <motion.a
+            href="https://www.strava.com/athletes/185228136"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ 
+              scale: 1.05, 
+              boxShadow: "0 0 20px rgba(255, 87, 34, 0.4)",
+              borderColor: "rgba(255, 87, 34, 0.8)",
+              color: "#ff5722"
+            }}
+            whileTap={{ scale: 0.98 }}
+            className="px-8 py-3 bg-brand-black/40 backdrop-blur-sm border border-brand-white/10 text-brand-white font-black uppercase tracking-[0.2em] text-xs transition-colors duration-300 rounded-full flex items-center gap-2 cursor-pointer"
+          >
+            <Zap size={14} className="text-brand-orange" />
+            Strava
+            <ArrowUpRight size={14} className="opacity-60" />
+          </motion.a>
+          <motion.a
+            href="https://www.instagram.com/mohith_0410/"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ 
+              scale: 1.05, 
+              boxShadow: "0 0 20px rgba(255, 87, 34, 0.4)",
+              borderColor: "rgba(255, 87, 34, 0.8)",
+              color: "#ff5722"
+            }}
+            whileTap={{ scale: 0.98 }}
+            className="px-8 py-3 bg-brand-black/40 backdrop-blur-sm border border-brand-white/10 text-brand-white font-black uppercase tracking-[0.2em] text-xs transition-colors duration-300 rounded-full flex items-center gap-2 cursor-pointer"
+          >
+            <InstagramIcon size={14} className="text-brand-orange" />
+            Instagram
+            <ArrowUpRight size={14} className="opacity-60" />
+          </motion.a>
         </motion.div>
 
         <motion.div 
@@ -111,14 +204,36 @@ const Hero: React.FC<HeroProps> = ({ totalDistance, totalTime, avgPace }) => {
         className="absolute bottom-12 z-10 flex flex-col items-center gap-4"
       >
         <span className="text-[10px] font-black uppercase tracking-[0.5em] text-brand-white/20">Scroll to Explore</span>
-        <motion.div 
+        <motion.button 
+          onClick={handleScrollDown}
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="text-brand-orange"
+          className="text-brand-orange bg-transparent border-0 outline-none flex items-center justify-center cursor-pointer hover:scale-110 transition-transform duration-300"
+          aria-label="Scroll to next section"
         >
           <ChevronDown size={32} strokeWidth={3} />
-        </motion.div>
+        </motion.button>
       </motion.div>
+
+      <AnimatePresence>
+        {showBackToTop && (
+          <motion.button
+            initial={{ opacity: 0, y: 20, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.8 }}
+            whileHover={{ 
+              scale: 1.1,
+              boxShadow: "0 0 15px rgba(255, 87, 34, 0.4)",
+            }}
+            whileTap={{ scale: 0.9 }}
+            onClick={scrollToTop}
+            className="fixed bottom-8 right-8 z-50 p-4 rounded-full bg-brand-black/80 border border-brand-white/15 text-brand-white hover:text-brand-orange hover:border-brand-orange transition-colors duration-300 backdrop-blur-md flex items-center justify-center cursor-pointer"
+            aria-label="Back to top"
+          >
+            <ChevronUp size={24} strokeWidth={2.5} />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </motion.section>
   );
 };
