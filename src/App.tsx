@@ -1,4 +1,4 @@
-import { useMemo, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Hero from './components/Cinematic/Hero';
 import StoryChapter from './components/Cinematic/StoryChapter';
@@ -9,11 +9,11 @@ import FinalCinematic from './components/Cinematic/FinalCinematic';
 import LoadingScreen from './components/Cinematic/LoadingScreen';
 import BackgroundGlow from './components/Cinematic/BackgroundGlow';
 import { getStats } from './data/statsProvider';
+import type { Stats } from './data/types';
 
 function App() {
-  const stats = useMemo(() => getStats(), []);
+  const [stats, setStats] = useState<Stats | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-
   useEffect(() => {
     if (isLoading) {
       document.body.style.overflow = 'hidden';
@@ -21,11 +21,35 @@ function App() {
       document.body.style.overflow = 'auto';
     }
   }, [isLoading]);
+  const handleRefreshSuccess = async () => {
+    try {
+      const data = await getStats();
+      setStats(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    async function loadStats() {
+      try {
+        const data = await getStats();
+        setStats(data);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+    loadStats();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 3500);
     return () => clearTimeout(timer);
   }, []);
+
+  if (!stats) {
+    return <div className="text-white p-10">Loading Stats...</div>;
+  }
 
   return (
     <>
@@ -34,9 +58,10 @@ function App() {
       <main className="bg-brand-black w-full overflow-x-hidden selection:bg-brand-orange selection:text-brand-black relative z-10">
         {/* Hero Section */}
         <Hero 
-          totalDistance={stats.totalDistance} 
-          totalTime={stats.totalTime}
-          avgPace={stats.avgPace}
+          totalDistance={stats.summary.totalDistance} 
+          totalTime={stats.summary.totalTime}
+          avgPace={stats.summary.averagePace}
+          onRefreshSuccess={handleRefreshSuccess}
         />
 
         {/* Chapter 1: The Spark */}
@@ -195,7 +220,7 @@ function App() {
             <p className="text-brand-orange text-lg md:text-2xl font-black uppercase tracking-[0.5em]">Proof of the Grind</p>
           </div>
           <MilestoneTracker 
-            totalDistance={stats.totalDistance}
+            totalDistance={stats.summary.totalDistance}
             personalBests={{
               "1.5K": "5:33",
               "5K": "22:45",

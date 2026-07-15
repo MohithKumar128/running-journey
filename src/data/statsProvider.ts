@@ -1,27 +1,13 @@
-import activitiesData from './gpx_analysis_results.json';
-import type { Activity, Stats } from './types';
+import type { Stats } from "./types";
 
-const activities = activitiesData as Activity[];
+const API_URL = "http://127.0.0.1:5000";
 
-export const getStats = (): Stats => {
-  const totalDistance = activities.reduce((acc, curr) => acc + curr.distance_m, 0) / 1000;
-  const totalTime = activities.reduce((acc, curr) => acc + curr.duration_s, 0) / 3600;
-  const avgPace = (activities.reduce((acc, curr) => acc + curr.duration_s, 0) / 60) / totalDistance;
-  
-  const longestRun = [...activities].sort((a, b) => b.distance_m - a.distance_m)[0];
-  
-  const monthlyDistance: Record<string, number> = {};
-  activities.forEach(activity => {
-    const month = activity.start_time.substring(0, 7);
-    monthlyDistance[month] = (monthlyDistance[month] || 0) + activity.distance_m / 1000;
-  });
+export async function getStats(): Promise<Stats> {
+  const response = await fetch(`${API_URL}/stats`);
 
-  return {
-    totalDistance,
-    totalTime,
-    avgPace,
-    longestRun,
-    monthlyDistance,
-    activities
-  };
-};
+  if (!response.ok) {
+    throw new Error("Failed to fetch stats");
+  }
+
+  return await response.json();
+}
